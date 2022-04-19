@@ -32,6 +32,31 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
 
+  <!-- signature patch -->
+  <PropertyGroup>
+    <PackageId>Cave.$(Product)</PackageId>
+    <PackageDescription>
+      $(Description)<hr/>Patched for signed nuget package.
+    </PackageDescription>
+    <WarningLevel>0</WarningLevel>
+    <Deterministic>true</Deterministic>
+    <DeterministicSourcePaths>false</DeterministicSourcePaths>
+    <SignAssembly>True</SignAssembly>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <NeutralLanguage />
+    <DelaySign>false</DelaySign>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSymbolsInPackage>true</IncludeSymbolsInPackage>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PackageProjectUrl>https://github.com/CaveSystems/mongo-csharp-driver.git</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/CaveSystems/mongo-csharp-driver.git</RepositoryUrl>
+  </PropertyGroup>
+  
   <PropertyGroup Condition="'$(Version)'==''">
     <Version>0.0.0-local</Version>
   </PropertyGroup>

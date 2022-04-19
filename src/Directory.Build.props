@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)../mongo-csharp-driver.snk</AssemblyOriginatorKeyFile>
+    <WarningLevel>0</WarningLevel>
+    <SignAssembly>True</SignAssembly>
+  </PropertyGroup>
+</Project>
