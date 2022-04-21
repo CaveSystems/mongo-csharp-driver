@@ -24,6 +24,8 @@ namespace MongoDB.Driver.GridFS
             "netstandard20";
 #elif NETSTANDARD2_1
             "netstandard21";
+#elif NET461
+            "net461";
 #endif
     }
 }

@@ -1,0 +1,79 @@
+# .NET Cave Build Script
+# Set Major Build Version in variables
+# before merging next to master, branch to new release version vX
+
+# trigger: add any branches with releases to build AND change fixedBuildVersion variable!
+trigger:
+- cave-release
+- refs/tags/x*
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  fixedBuildVersion: '0.0'
+  solution: 'cave-signed-mongo-csharp-driver.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  isTagged: false
+  
+steps:
+
+- task: PowerShell@2
+  name: SetGitVars
+  displayName: Set git variables
+  env:
+    BUILD_BUILDNUMBER: $(Build.BuildNumber)
+    BUILD_SOURCEBRANCHNAME: $(Build.SourceBranchName)
+  inputs:
+    targetType: inline
+    script: |
+      $gitTag = "$(git describe --tags --always)".TrimStart('v', 'x', 'V', 'X').Trim()
+      echo "branch = $env:BUILD_SOURCEBRANCHNAME"
+      echo "git tag = '$gitTag'"
+      if ($gitTag.Contains('-'))
+      {
+        $parts = $gitTag.Split('-', 2)
+        $ver = [Version]$parts[0]
+        $version = "$($ver.Major).$($ver.Minor).$($ver.Build+1)-git-"+$parts[1]
+      }
+      else
+      {
+        $version = $gitTag
+      }
+      echo "build version = '$version'"
+      Write-Host "##vso[task.setvariable variable=version]$version"
+
+- task: NuGetToolInstaller@0
+  inputs:
+    versionSpec: '>=4.9.0'
+
+- task: NuGetCommand@2
+  displayName: Restore nuget packages
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: VSBuild@1
+  displayName: Build solution
+  inputs:
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+#- task: VSTest@2
+#  inputs:
+#    platform: '$(buildPlatform)'
+#    configuration: '$(buildConfiguration)'
+#    testAssemblyVer2: |
+#      tests/**/bin/Release/**/MongoDB.*.Tests.dll
+#      tests/**/bin/Release/**/MongoDB.*.Examples.dll
+
+- task: NuGetCommand@2
+  displayName: Push to nuget (release)
+  condition: true
+  inputs:
+    command: push
+    packagesToPush: '$(Build.SourcesDirectory)/src/**/bin/Release/*.nupkg'
+    nuGetFeedType: external
+    publishFeedCredentials: 'nuget-default'
+    includeSymbols: true

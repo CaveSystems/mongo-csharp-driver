@@ -10,19 +10,19 @@
     <LangVersion>9</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
-    <CodeAnalysisRuleSet>..\..\MongoDB.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyTitle>MongoDB.Driver.Core</AssemblyTitle>
-    <Product>MongoDB.Driver.Core</Product>
+    <AssemblyTitle>MongoDB.Libmongocrypt</AssemblyTitle>
+    <Product>MongoDB.Libmongocrypt</Product>
     <Company>MongoDB Inc.</Company>
-    <Copyright>Copyright © 2010-present MongoDB Inc.</Copyright>
-    <Description>Official MongoDB supported Driver Core library. See https://docs.mongodb.com/drivers/csharp/ for more details.</Description>
+    <Copyright>Copyright © 2019–present MongoDB Inc.</Copyright>
+    <Description>Libmongocrypt wrapper for the .NET driver.</Description>
     <Authors>MongoDB Inc.</Authors>
     <PackageIcon>packageIcon.png</PackageIcon>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageDescription>Core Component of the Official MongoDB .NET Driver.</PackageDescription>
+    <PackageDescription>Crypt Component of the Official MongoDB .NET Driver.</PackageDescription>
     <PackageProjectUrl>https://docs.mongodb.com/drivers/csharp/</PackageProjectUrl>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
     <PackageTags>mongodb;mongo;nosql</PackageTags>
@@ -85,27 +85,27 @@
 
   <!--Snappy-->
   <PropertyGroup>
-    <SnappyWinBinaries>Core/Compression/Snappy/lib/win</SnappyWinBinaries>
-    <SnappyLinuxBinaries>Core/Compression/Snappy/lib/linux</SnappyLinuxBinaries>
-    <SnappyOsxBinaries>Core/Compression/Snappy/lib/osx</SnappyOsxBinaries>
+    <CryptWinBinaries>lib/win</CryptWinBinaries>
+    <CryptLinuxBinaries>lib/linux</CryptLinuxBinaries>
+    <CryptOsxBinaries>lib/osx</CryptOsxBinaries>
   </PropertyGroup>
 
   <ItemGroup>
     <!--Responsible for 'runtimes\$OS\native\%(FileName)%(Extension)' in package.nupkg-->
     <!--win-->
-    <Content Include="$(SnappyWinBinaries)/**/*.dll">
+    <Content Include="$(CryptWinBinaries)/**/*.dll">
       <!--x32/x64-->
       <Pack>true</Pack>
       <PackagePath>$(CompressionWinRuntimesPath)</PackagePath>
     </Content>
     <!--linux-->
-    <Content Include="$(SnappyLinuxBinaries)/**/*.so">
+    <Content Include="$(CryptLinuxBinaries)/**/*.so">
       <!--x32/x64-->
       <Pack>true</Pack>
       <PackagePath>$(CompressionLinuxRuntimesPath)</PackagePath>
     </Content>
     <!--osx-->
-    <Content Include="$(SnappyOsxBinaries)/**/*.dylib">
+    <Content Include="$(CryptOsxBinaries)/**/*.dylib">
       <!--x32/x64-->
       <Pack>true</Pack>
       <PackagePath>$(CompressionOsxRuntimesPath)</PackagePath>
@@ -116,72 +116,20 @@
     <!--Used to allow working with native libraries in our test projects-->
     <!--Responsible for 'context and contentFiles' folders in package.nupkg-->
     <!--win-->
-    <Content Include="$(SnappyWinBinaries)/**/*.dll">
+    <Content Include="$(CryptWinBinaries)/**/*.dll">
       <!--x32/x64-->
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Link>%(FileName)%(Extension)</Link>
     </Content>
     <!--linux-->
-    <Content Include="$(SnappyLinuxBinaries)/**/*.so">
+    <Content Include="$(CryptLinuxBinaries)/**/*.so">
       <!--x32/x64-->
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Link>%(FileName)%(Extension)</Link>
     </Content>
     <!--osx-->
-    <Content Include="$(SnappyOsxBinaries)/**/*.dylib">
+    <Content Include="$(CryptOsxBinaries)/**/*.dylib">
       <!--x32/x64-->
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Link>%(FileName)%(Extension)</Link>
-    </Content>
-  </ItemGroup>
-
-  <!--Zstd-->
-  <PropertyGroup>
-    <ZstdWinBinaries>Core/Compression/Zstandard/lib/win</ZstdWinBinaries>
-    <ZstdLinuxBinaries>Core/Compression/Zstandard/lib/linux</ZstdLinuxBinaries>
-    <ZstdOsxBinaries>Core/Compression/Zstandard/lib/osx</ZstdOsxBinaries>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <!--Responsible for 'runtimes\$OS\native\%(FileName)%(Extension)' in package.nupkg-->
-    <!--win-->
-    <Content Include="$(ZstdWinBinaries)/**/*.dll">
-      <!--only x64-->
-      <Pack>true</Pack>
-      <PackagePath>$(CompressionWinRuntimesPath)</PackagePath>
-    </Content>
-    <!--linux-->
-    <Content Include="$(ZstdLinuxBinaries)/**/*.so">
-      <!--only x64-->
-      <Pack>true</Pack>
-      <PackagePath>$(CompressionLinuxRuntimesPath)</PackagePath>
-    </Content>
-    <!--osx-->
-    <Content Include="$(ZstdOsxBinaries)/**/*.dylib">
-      <!--only x64-->
-      <Pack>true</Pack>
-      <PackagePath>$(CompressionOsxRuntimesPath)</PackagePath>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <!--Used to allow working with native libraries in our test projects-->
-    <!--Responsible for 'context and contentFiles' folders in package.nupkg-->
-    <!--win-->
-    <Content Include="$(ZstdWinBinaries)/**/*.dll">
-      <!--only x64-->
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Link>%(FileName)%(Extension)</Link>
-    </Content>
-    <!--linux-->
-    <Content Include="$(ZstdLinuxBinaries)/**/*.so">
-      <!--only x64-->
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Link>%(FileName)%(Extension)</Link>
-    </Content>
-    <!--osx-->
-    <Content Include="$(ZstdOsxBinaries)/**/*.dylib">
-      <!--only x64-->
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Link>%(FileName)%(Extension)</Link>
     </Content>
@@ -190,17 +138,14 @@
   <!--targets-->
   <ItemGroup>
     <!--Used for non-sdk projects-->
-    <!--Responsible for build/MongoDB.Driver.Core.targets-->
-    <Content Include="MongoDB.Driver.Core.targets">
+    <!--Responsible for build/Libmongocrypt.targets-->
+    <Content Include="MongoDB.Libmongocrypt.targets">
       <Pack>true</Pack>
       <PackagePath>build/Cave.$(Product).targets</PackagePath>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DnsClient" Version="1.6.0" />
-    <PackageReference Include="SharpCompress" Version="0.30.1" />
-    <PackageReference Include="System.Buffers" Version="4.5.1" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -209,21 +154,10 @@
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
     <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
-    <PackageReference Include="System.Net.Http" Version="4.3.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\MongoDB.Bson\MongoDB.Bson.csproj" />
-    <ProjectReference Include="..\MongoDB.Libmongocrypt\MongoDB.Libmongocrypt.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="..\MongoDB.Shared\Hasher.cs" Link="Core\Misc\Hasher.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\License.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
-    <None Include="..\..\THIRD-PARTY-NOTICES" Pack="true" PackagePath="\" />
     <None Include="..\..\packageIcon.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
