@@ -11,14 +11,20 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  fixedBuildVersion: '0.0'
   solution: 'cave-signed-mongo-csharp-driver.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   isTagged: false
-  
+
 steps:
 
+- task: Bash@3
+  name: ShowEnvironment
+  displayName: Display all environment variables
+  inputs:
+    targetType: 'inline'
+    script: 'env | sort'
+    
 - task: PowerShell@2
   name: SetGitVars
   displayName: Set git variables
@@ -28,13 +34,16 @@ steps:
   inputs:
     targetType: inline
     script: |
+      $fixedVersionString = $(Get-Content GitVersion.yml -First 1).Split(':', 2)[1].Trim()
+      $fixedVersion = [Version]"${fixedVersionString}"
+      echo "fixed version = '$fixedVersion'"
       $gitTag = "$(git describe --tags --always)".TrimStart('v', 'x', 'V', 'X').Trim()
       echo "branch = $env:BUILD_SOURCEBRANCHNAME"
       echo "git tag = '$gitTag'"
       if ($gitTag.Contains('-'))
       {
         $parts = $gitTag.Split('-', 2)
-        $version = $parts[0]+"-git-"+$parts[1]
+        $version = $fixedVersion.ToString()+"-git-"+$parts[1]
       }
       else
       {
