@@ -41,7 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\MongoDB.Bson\MongoDB.Bson.csproj" />
+    <ProjectReference Include="..\..\src\MongoDB.Bson\Cave.MongoDB.Bson.csproj" />
     <ProjectReference Include="..\MongoDB.Bson.TestHelpers\MongoDB.Bson.TestHelpers.csproj" />
   </ItemGroup>
 

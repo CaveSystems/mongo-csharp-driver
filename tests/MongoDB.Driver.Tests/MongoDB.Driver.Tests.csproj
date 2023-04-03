@@ -25,19 +25,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" PrivateAssets="All" Version="1.0.0" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" PrivateAssets="all" Version="1.0.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\MongoDB.Bson\MongoDB.Bson.csproj" />
-    <ProjectReference Include="..\..\src\MongoDB.Driver.GridFS\MongoDB.Driver.GridFS.csproj" />
-    <ProjectReference Include="..\..\src\MongoDB.Driver\MongoDB.Driver.csproj" />
-    <ProjectReference Include="..\..\src\MongoDB.Driver.Core\MongoDB.Driver.Core.csproj" />
+    <ProjectReference Include="..\..\src\MongoDB.Bson\Cave.MongoDB.Bson.csproj" />
+    <ProjectReference Include="..\..\src\MongoDB.Driver.GridFS\Cave.MongoDB.Driver.GridFS.csproj" />
+    <ProjectReference Include="..\..\src\MongoDB.Driver\Cave.MongoDB.Driver.csproj" />
+    <ProjectReference Include="..\..\src\MongoDB.Driver.Core\Cave.MongoDB.Driver.Core.csproj" />
     <ProjectReference Include="..\MongoDB.Bson.TestHelpers\MongoDB.Bson.TestHelpers.csproj" />
     <ProjectReference Include="..\MongoDB.Driver.TestHelpers\MongoDB.Driver.TestHelpers.csproj" />
     <ProjectReference Include="..\MongoDB.Driver.Core.TestHelpers\MongoDB.Driver.Core.TestHelpers.csproj" />

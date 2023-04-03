@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp3.1;net472;net5.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net472;net6.0</TargetFrameworks>
     <LangVersion>9</LangVersion>
     <CodeAnalysisRuleSet>..\..\..\MongoDBTest.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -13,8 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MongoDB.Driver" Version="[0.0.0.0]" Condition="'$(ReferenceDriverAsPackage)' == 'true'" />
-    <ProjectReference Include="..\..\..\src\MongoDB.Driver\MongoDB.Driver.csproj" Condition="'$(ReferenceDriverAsPackage)' != 'true'" />
+    <PackageReference Include="Cave.MongoDB.Driver" Version="[0.0.0.0]" Condition="'$(ReferenceDriverAsPackage)' == 'true'" />
+    <ProjectReference Include="..\..\..\src\MongoDB.Driver\Cave.MongoDB.Driver.csproj" Condition="'$(ReferenceDriverAsPackage)' != 'true'" />
   </ItemGroup>
 
   <ItemGroup>

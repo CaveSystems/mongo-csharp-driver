@@ -13,9 +13,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MongoDB.Bson\MongoDB.Bson.csproj" />
-    <ProjectReference Include="..\MongoDB.Driver\MongoDB.Driver.csproj" />
-    <ProjectReference Include="..\MongoDB.Driver.Core\MongoDB.Driver.Core.csproj" />
+    <ProjectReference Include="..\MongoDB.Bson\Cave.MongoDB.Bson.csproj" />
+    <ProjectReference Include="..\MongoDB.Driver\Cave.MongoDB.Driver.csproj" />
+    <ProjectReference Include="..\MongoDB.Driver.Core\Cave.MongoDB.Driver.Core.csproj" />
   </ItemGroup>
 
 </Project>

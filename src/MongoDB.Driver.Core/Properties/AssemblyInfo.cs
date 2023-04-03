@@ -35,3 +35,7 @@ using MongoDB.Bson;
 [assembly: InternalsVisibleTo("MongoDB.Driver.Legacy.TestHelpers")]
 [assembly: InternalsVisibleTo("MongoDB.Driver.Tests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
+
+// signature patch
+[assembly: InternalsVisibleTo("Cave.MongoDB.Driver")]
+[assembly: InternalsVisibleTo("Cave.MongoDB.Driver.Legacy")]

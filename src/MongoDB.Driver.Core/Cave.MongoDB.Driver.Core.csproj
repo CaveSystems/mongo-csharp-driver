@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MongoDB.Bson\MongoDB.Bson.csproj" />
+    <ProjectReference Include="..\MongoDB.Bson\Cave.MongoDB.Bson.csproj" />
   </ItemGroup>
 
   <ItemGroup>

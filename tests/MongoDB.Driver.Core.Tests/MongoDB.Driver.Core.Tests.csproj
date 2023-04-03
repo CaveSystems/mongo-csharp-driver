@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\BuildProps\Tests.Build.props" />
 
   <PropertyGroup>
@@ -34,8 +34,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\MongoDB.Bson\MongoDB.Bson.csproj" />
-    <ProjectReference Include="..\..\src\MongoDB.Driver.Core\MongoDB.Driver.Core.csproj" />
+    <ProjectReference Include="..\..\src\MongoDB.Bson\Cave.MongoDB.Bson.csproj" />
+    <ProjectReference Include="..\..\src\MongoDB.Driver.Core\Cave.MongoDB.Driver.Core.csproj" />
     <ProjectReference Include="..\MongoDB.Bson.TestHelpers\MongoDB.Bson.TestHelpers.csproj" />
     <ProjectReference Include="..\MongoDB.Driver.Core.TestHelpers\MongoDB.Driver.Core.TestHelpers.csproj" />
   </ItemGroup>
