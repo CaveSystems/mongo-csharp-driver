@@ -8,7 +8,6 @@
     <AssemblyTitle>MongoDB.Driver.Legacy</AssemblyTitle>
     <Product>MongoDB.Driver.Legacy</Product>
     <Description>Legacy MongoDB supported driver for MongoDB. See https://www.mongodb.com/docs/drivers/csharp/ for more details.</Description>
-    <PackageId>mongocsharpdriver</PackageId>
     <PackageDescription>This package contains the legacy driver. The new driver's package name is MongoDB.Driver</PackageDescription>
     <PackageTags></PackageTags>
   </PropertyGroup>
