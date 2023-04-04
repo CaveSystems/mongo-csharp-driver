@@ -5,8 +5,7 @@
     <IsLinux Condition="$([MSBuild]::IsOSPlatform('Linux'))">true</IsLinux>
   </PropertyGroup>
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net472</TargetFrameworks>
-    <TargetFrameworks Condition="'$(IsWindows)'!='true'">netstandard2.0;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <LangVersion>9</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
@@ -15,7 +14,6 @@
 
   <PropertyGroup>
     <AssemblyTitle>MongoDB.Libmongocrypt</AssemblyTitle>
-    <Product>MongoDB.Libmongocrypt</Product>
     <Company>MongoDB Inc.</Company>
     <Copyright>Copyright © 2019–present MongoDB Inc.</Copyright>
     <Description>Libmongocrypt wrapper for the .NET driver.</Description>
@@ -23,39 +21,12 @@
     <PackageIcon>packageIcon.png</PackageIcon>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageDescription>Crypt Component of the Official MongoDB .NET Driver.</PackageDescription>
-    <PackageProjectUrl>https://docs.mongodb.com/drivers/csharp/</PackageProjectUrl>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
     <PackageTags>mongodb;mongo;nosql</PackageTags>
     <PackageLanguage>en-US</PackageLanguage>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-  </PropertyGroup>
-
-  <!-- signature patch -->
-  <PropertyGroup>
-    <PackageId>Cave.$(Product)</PackageId>
-    <PackageDescription>
-      Strong named package of $(Product)
-      Original description: $(Description)
-    </PackageDescription>
-    <WarningLevel>0</WarningLevel>
-    <Deterministic>true</Deterministic>
-    <DeterministicSourcePaths>false</DeterministicSourcePaths>
-    <SignAssembly>True</SignAssembly>
-    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <NeutralLanguage />
-    <DelaySign>false</DelaySign>
-    <DebugType>portable</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-    <IncludeSymbols>true</IncludeSymbols>
-    <IncludeSymbolsInPackage>true</IncludeSymbolsInPackage>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <PackageProjectUrl>https://github.com/CaveSystems/mongo-csharp-driver.git</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/CaveSystems/mongo-csharp-driver.git</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Version)'==''">

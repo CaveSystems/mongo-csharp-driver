@@ -1,0 +1,21 @@
+<Project>
+
+  <!-- signature patch -->
+  <PropertyGroup>	
+    <WarningLevel>0</WarningLevel>
+    <Deterministic>true</Deterministic>
+    <DeterministicSourcePaths>false</DeterministicSourcePaths>
+    <SignAssembly>True</SignAssembly>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <DelaySign>false</DelaySign>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <IncludeSymbolsInPackage>true</IncludeSymbolsInPackage>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PackageProjectUrl>https://github.com/CaveSystems/mongo-csharp-driver.git</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/CaveSystems/mongo-csharp-driver.git</RepositoryUrl>
+    <AssemblyOriginatorKeyFile>$(SolutionDir)mongo-csharp-driver.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  
+</Project>

@@ -1,63 +1,12 @@
-﻿MongoDB C# Driver
-=================
+﻿Signed MongoDB C# Driver
+========================
 
-You can get the latest stable release from the [official Nuget.org feed](https://www.nuget.org/packages/MongoDB.Driver) or from our [github releases page](https://github.com/mongodb/mongo-csharp-driver/releases).
+This repository contains a patched version of the [Mongo C# Driver](https://github.com/mongodb/mongo-csharp-driver/) including the [Libmongocrypt Package](https://github.com/mongodb/libmongocrypt/).
 
-Getting Started
----------------
+For patch notes, changes, bugs, .. see the original repositories and issues.
 
-### Untyped Documents
-```C#
-using MongoDB.Bson;
-using MongoDB.Driver;
-```
+Please report only bugs concerning the signature and patches needed for signing.
 
-```C#
-var client = new MongoClient("mongodb://localhost:27017");
-var database = client.GetDatabase("foo");
-var collection = database.GetCollection<BsonDocument>("bar");
-
-await collection.InsertOneAsync(new BsonDocument("Name", "Jack"));
-
-var list = await collection.Find(new BsonDocument("Name", "Jack"))
-    .ToListAsync();
-
-foreach(var document in list)
-{
-    Console.WriteLine(document["Name"]);
-}
-```
-
-### Typed Documents
-
-```C#
-using MongoDB.Bson;
-using MongoDB.Driver;
-```
-
-```C#
-public class Person
-{
-    public ObjectId Id { get; set; }
-    public string Name { get; set; }
-}
-```
-
-```C#
-var client = new MongoClient("mongodb://localhost:27017");
-var database = client.GetDatabase("foo");
-var collection = database.GetCollection<Person>("bar");
-
-await collection.InsertOneAsync(new Person { Name = "Jack" });
-
-var list = await collection.Find(x => x.Name == "Jack")
-    .ToListAsync();
-
-foreach(var person in list)
-{
-    Console.WriteLine(person.Name);
-}
-```
 
 Documentation
 -------------

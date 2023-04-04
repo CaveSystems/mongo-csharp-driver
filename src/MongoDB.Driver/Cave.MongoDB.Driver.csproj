@@ -12,11 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MongoDB.Libmongocrypt" Version="1.7.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MongoDB.Libmongocrypt\Cave.MongoDB.Libmongocrypt.csproj" />
     <ProjectReference Include="..\MongoDB.Bson\Cave.MongoDB.Bson.csproj" />
     <ProjectReference Include="..\MongoDB.Driver.Core\Cave.MongoDB.Driver.Core.csproj" />
   </ItemGroup>

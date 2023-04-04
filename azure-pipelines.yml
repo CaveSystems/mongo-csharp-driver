@@ -34,20 +34,18 @@ steps:
   inputs:
     targetType: inline
     script: |
-      $fixedVersionString = $(Get-Content GitVersion.yml -First 1).Split(':', 2)[1].Trim()
-      $fixedVersion = [Version]"${fixedVersionString}"
-      echo "fixed version = '$fixedVersion'"
-      $gitTag = "$(git describe --tags --always)".TrimStart('v', 'x', 'V', 'X').Trim()
+      $gitTag = "$(git describe --tags --always)".Trim()
       echo "branch = $env:BUILD_SOURCEBRANCHNAME"
       echo "git tag = '$gitTag'"
-      if ($gitTag.Contains('-'))
+      if ($gitTag.StartsWith('v') || $gitTag.StartsWith('x'))
       {
-        $parts = $gitTag.Split('-', 2)
-        $version = $fixedVersion.ToString()+"-git-"+$parts[1]
+        $version = $gitTag.TrimStart('v', 'x', 'V', 'X')
       }
       else
       {
-        $version = $gitTag
+        $fixedVersion = $(Get-Content GitVersion.yml -First 1).Split(':', 2)[1].Trim()        
+        echo "fixed version = '$fixedVersion'"
+        $version = $fixedVersion + "-" + $env:BUILD_BUILDNUMBER
       }
       echo "build version = '$version'"
       Write-Host "##vso[task.setvariable variable=version]$version"
